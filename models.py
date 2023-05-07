@@ -11,7 +11,7 @@ class User(Base):
     first_name = Column(String)
     last_name = Column(String)
     email = Column(String, unique=True, index=True)
-    wxid = Column(String, unique=True)
+    wxid = Column(String)
 
     reservations = relationship("Table", back_populates="reserver")
 

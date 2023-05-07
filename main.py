@@ -31,8 +31,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-if not os.path.exists('./database.db'):
-    session = get_db()
+
+"""
+@app.post("/init")
+def init(session: Session = Depends(get_db)):
     names = "path3754, path3742, path3778, path3790, path3766, path3802, path3814, path4014, path4026, path3826, path3830, path3850, path3866, path4162, path4242, path4094, path4050, path4066, path4038, path4254, path4126, path3882, path4082, path4106, path3894, path4138, path3906, path4150, path3918, path4186, path4174, path3942, path3930, path4198, path3954, path4222, path3966, path3978, path3990, path4232, path4210, path4002"
     name_list = names.split(', ')
     for name in name_list:
@@ -41,7 +43,8 @@ if not os.path.exists('./database.db'):
         )
         session.add(new_table)
         session.commit()
-
+"""
+    
 
 @app.post("/request-token/{email}")
 def request_token(
@@ -121,3 +124,5 @@ def get_data(
         db: Session = Depends(get_db)
 ) -> list[schemas.Table]:
     return crud.get_tables(db, 999)
+
+
